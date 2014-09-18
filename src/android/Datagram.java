@@ -36,15 +36,16 @@ public class Datagram extends CordovaPlugin {
         }
 
         public void run() {
-            byte[] data = new byte[2048]; // investigate MSG_PEEK and MSG_TRUNC in java
+            byte[] data = new byte[20480]; // investigate MSG_PEEK and MSG_TRUNC in java
             DatagramPacket packet = new DatagramPacket(data, data.length);
             while (true) {
                 try {
                     this.m_socket.receive(packet);
-                    String msg = new String(data, 0, packet.getLength(), "UTF-8")
+                    String msg = new String(data, 0, packet.getLength());/*
                                     .replace("'", "\'")
                                     .replace("\r", "\\r")
                                     .replace("\n", "\\n");
+                                    */
                     String address = packet.getAddress().getHostAddress();
                     int port = packet.getPort();
 
@@ -118,7 +119,7 @@ public class Datagram extends CordovaPlugin {
             int port = data.getInt(3);
 
             try {
-                byte[] bytes = message.getBytes("UTF-8");
+                byte[] bytes = message.getBytes();
                 DatagramPacket packet = new DatagramPacket(bytes, bytes.length, InetAddress.getByName(address), port);
                 socket.send(packet);
                 callbackContext.success(message);
