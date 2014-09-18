@@ -4,6 +4,8 @@ cordova-plugin-datagram
 Cordova plugin for sending datagram/UDP. Supports multicast UDP.
 
 
+I modified some code from original to improvement.
+
 example
 
 ```js
