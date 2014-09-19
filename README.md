@@ -12,7 +12,7 @@ $> cordova plugin add https://github.com/masashiGMS/cordova-plugin-datagram.git
 ```
 
 -----
-example
+###example
 
 ```js
 var datagram = cordova.require("in.girish.datagram.datagram");
@@ -44,7 +44,7 @@ button.addEventListener(button, "click", function() {
 
 -----
 
-example2
+###example2
 
 client
 ```js
