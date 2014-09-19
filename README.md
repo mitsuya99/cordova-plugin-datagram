@@ -35,3 +35,50 @@ button.addEventListener(button, "click", function() {
   });
 });
 ```
+
+-----
+
+example2
+
+client
+```js
+var broadcastSocket = datagram.createSocket("multicast-udp4");
+broadcastSocket.bind(3003, function(data) {});
+broadcastSocket.on("message", function(data, info) {
+  alert(data);
+  alert(JSON.stringify(info));
+});
+
+// Find a server using broadcasting.
+var button = document.getElementById("button");
+button.addEventListener("click", function() {
+  broadcastSocket.send("Hello", "255.255.255.255", 3002, function() {
+    
+  });
+});
+```
+
+server
+```js
+var broadcast = datagram.createSocket("multicast-udp4");
+broadcast.bind(3002, function(data) {});
+broadcast.on("message", function(data, info) {
+  alert(data);
+  alert(JSON.stringify(info));
+  broadcast.send("Hi!", info.address, 3003, function() {
+    
+  });
+});
+```
+
+
+
+
+
+
+
+
+
+
+
+
