@@ -6,6 +6,12 @@ Cordova plugin for sending datagram/UDP. Supports multicast UDP.
 
 I modified some code from original to improvement.
 
+###Install
+```bash
+$> cordova plugin add https://github.com/masashiGMS/cordova-plugin-datagram.git
+```
+
+-----
 example
 
 ```js
